@@ -40,7 +40,7 @@ void remove_element(std::vector<int>& arr)
             arr.push_back(0);
             return;
         }
-        else if (j = arr.size() - 1) 
+        else if (j == arr.size() - 1) 
         {
             std::cout << "There is no such element in your array" << std::endl;
         }
