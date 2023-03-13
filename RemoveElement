@@ -28,28 +28,23 @@ void input_arr(std::vector<int>& arr)
 
 void remove_element(std::vector<int>& arr)
 {
-    
     int target = 0;
     std::cout << "Write element to be removed" << std::endl;
     std::cin >> target;
-    char determinant = 0;
-    for (int i = 0; i < arr.size(); ++i)
+
+    for (int j = 0; j < arr.size(); ++j)
     {
-        for (int j = 0; j < arr.size(); ++j)
+        if (target == arr[j])
         {
-            if (target == arr[j])
-            {
-                arr.erase(arr.begin() + j);
-                arr.push_back(0);
-            }
-            else 
-            {
-                std::cout << "There is no such element in your array" << std::endl;
-            }
+            arr.erase(arr.begin() + j);
+            arr.push_back(0);
+            return;
+        }
+        else if (j = arr.size() - 1) 
+        {
+            std::cout << "There is no such element in your array" << std::endl;
         }
     }
-        
-    
 }
 
 void print_arr (std::vector<int>& arr)
