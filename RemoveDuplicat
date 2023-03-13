@@ -1,0 +1,76 @@
+#include <iostream>
+#include <vector>
+
+
+void input_arr(std::vector<int>&);
+void sort_arr(std::vector<int>&);
+void repet_item(std::vector<int>&);
+void print_arr(std::vector<int>&);
+
+int main ()
+{
+    std::cout << "Input size of array" << std::endl;
+    int size = 0;
+    std::cin >> size;
+    std::vector<int> arr(size);
+    input_arr(arr);
+    sort_arr(arr);
+    repet_item(arr);
+    print_arr(arr);
+    return 0;
+}
+
+void input_arr (std::vector<int>& arr)
+{
+    std::cout << "Input elements of array" << std::endl;
+    for (int i = 0; i < arr.size(); ++i)
+    {
+        std::cin >> arr[i];
+    }
+}
+
+void sort_arr (std::vector<int>& arr)
+{
+    int tmp = 0;
+    for (int i = 0; i < arr.size(); ++i)
+    {
+        for (int j = 0; j < arr.size() - i - 1; ++j)
+        {
+            if (arr[j] > arr[j + 1])
+            {
+                tmp = arr[j];
+                arr[j] = arr[j + 1];
+                arr[j + 1] = tmp;
+            }
+        }
+    }
+}
+
+void repet_item (std::vector<int>& arr)
+{
+    int count = 0;
+    for (int i = 0; i < arr.size(); ++i)
+    {
+        for (int j = 0; j < arr.size(); ++j)
+        {
+            if (i != j && (arr[i] == arr[j]))
+            {
+                arr.erase(arr.begin() + i);
+                ++count;
+            }
+        }
+    }
+    for (int i = 0; i <= count; ++i)
+    {
+        arr.push_back(0);
+    }
+}
+
+void print_arr (std::vector<int>& arr)
+{
+    std::cout << "Your changed array" << std::endl;
+    for (int i = 0; i < arr.size(); ++i)
+    {
+        std::cout << arr[i] << " ";
+    }
+}
