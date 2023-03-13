@@ -1,62 +1,52 @@
 #include <iostream>
 #include <vector>
 
-void input_arr(std::vector<int>&);
-void remove_element(std::vector<int>&);
+void input_arr(std::vector<int>&, int);
 void print_arr(std::vector<int>&);
-
 int main ()
 {
-    std::cout << "Enter size of array" << std::endl;
-    int size = 0;
-    std::cin >> size;
-    std::vector<int> arr(size);
-    input_arr(arr);
-    remove_element(arr);
+    std::vector<int> arr(0);
+    int number = 0;
+    std::cout << "Write any number" << std::endl;
+    std::cin >> number;
+    std::cout <<"Output: " << number << " + " << 1 << " = " << number + 1 << std::endl;
+    input_arr(arr, number);
     print_arr(arr);
     return 0;
 }
 
-void input_arr(std::vector<int>& arr)
+void input_arr (std::vector<int>& arr, int number)
 {
-    std::cout << "Input elements of array" << std::endl;
-    for (int i = 0; i < arr.size(); ++i)
+    number += 1;
+    for (number; number > 0; number /= 10)
     {
-        std::cin >> arr[i];
+        int acum = number % 10;
+        arr.push_back(acum);
     }
-}
-
-void remove_element(std::vector<int>& arr)
-{
-    
-    int target = 0;
-    std::cout << "Write element to be removed" << std::endl;
-    std::cin >> target;
-    char determinant = 0;
-    for (int i = 0; i < arr.size(); ++i)
-    {
-        for (int j = 0; j < arr.size(); ++j)
-        {
-            if (target == arr[j])
-            {
-                arr.erase(arr.begin() + j);
-                arr.push_back(0);
-            }
-            else 
-            {
-                std::cout << "There is no such element in your array" << std::endl;
-            }
-        }
-    }
-        
-    
 }
 
 void print_arr (std::vector<int>& arr)
 {
-    std::cout << "Your changed array" << std::endl;
+    for (int i = 0; i < arr.size() / 2; ++i)
+    {
+        int tmp = arr[i];
+        arr[i] = arr[arr.size() - 1 - i];
+        arr[arr.size() - 1 - i] = tmp;
+    }
+
+    std::cout << "The digits: ";
     for (int i = 0; i < arr.size(); ++i)
     {
-        std::cout << arr[i] << " ";
+        if (i < arr.size() - 1)
+        {
+            std::cout << arr[i] << ",";
+        }
+        else
+        {
+            std::cout << arr[i];
+        }
     }
 }
+
+
+
